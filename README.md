@@ -5,7 +5,7 @@ PyTorch implementation for [paper](): "Silhouette Guided Point Cloud Reconstruct
 
 Network architecture:
 
-<img src='figs/fig-network.jpg' width=400>
+<img src='figs/fig-network.jpg' width=700>
 
 ## Requirements
 - Python 3
