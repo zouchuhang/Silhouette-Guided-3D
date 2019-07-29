@@ -31,26 +31,26 @@ PyTorch implementation for [paper](): "Silhouette Guided Point Cloud Reconstruct
 
 ## Training
 - Point cloud reconstruction
-```
-python train.py
-```
-FSSR post-refinement:
+    ```
+    python train.py
+    ```
+    - FSSR post-refinement:
 
 - Silhouette completion
-First train on DYCE dataset:
-```
-python train_sc.py
-```
-Then finetune on Pix3D dataset, 5-fold cross validation:
-```
-python train_sc_ft.py
-```
-You will need to run it 5 times by changing the fold number in L32-35
+    First train on DYCE dataset:
+    ```
+    python train_sc.py
+    ```
+    Then finetune on Pix3D dataset, 5-fold cross validation:
+    ```
+    python train_sc_ft.py
+    ```
+    - You will need to run it 5 times by changing the fold number in L32-35
 
 - Silhouette guidede point cloud reconstruction
-```
-python train_occ.py
-```
+    ```
+    python train_occ.py
+    ```
 
 ## Evaluation
 - ShapeNet
