@@ -41,7 +41,7 @@ PyTorch implementation for [paper](): "Silhouette Guided Point Cloud Reconstruct
     ```
     python train_sc.py
     ```
-    Then finetune on Pix3D dataset, 5-fold cross validation (You will need to run it 5 times by changing the fold number in L32-35):
+    - Then finetune on Pix3D dataset, 5-fold cross validation (You will need to run it 5 times by changing the fold number in L32-35):
     ```
     python train_sc_ft.py
     ```
