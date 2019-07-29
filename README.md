@@ -33,30 +33,56 @@ Network architecture:
 - Download [pre-processed Pix3D dataset](https://drive.google.com/file/d/1DdcDpePJ-t19SBLRuu0LSK5mNCeB1iUJ/view?usp=sharing) and put them under the ./data/ folder. This includes pre-computed complete silhouette and ground truth point clouds rotated w.r.t. camera position.
 - Download [ShapeNet dataset](https://drive.google.com/drive/folders/131dH36qXCabym1JjSmEpSQZg4dmZVQid) and put them under the ./data/ folder.
 - Download [pre-processed LSUN dataset](https://drive.google.com/file/d/1L7MrNuwYo7-e-adCHJ-S4d4u-_-4JMpS/view?usp=sharing) and put them under the ./data/ folder
-- Download [pre-computed result](). and put them under the ./result/ folder. This includes point clouds prediction on ShapeNet and Pix3D after FSSR refinement.
+- Download [pre-computed result](https://drive.google.com/file/d/103nkDQ5fkJVFV2G9x9FQRSuHByJlKY7q/view?usp=sharing). and put them under the ./result/ folder. This includes point clouds prediction on ShapeNet and Pix3D after FSSR refinement.
 
 ## Training
 - Point cloud reconstruction
     ```
     python train.py
+    python test.py
     ```
-    - FSSR post-refinement:
+    This will save network predictions, then for FSSR post-refinement:
+    - Start matlab
+        ```
+        cd matlab
+        ./matlab
+    
+        ```
+    - pre-compute FSSR params (per-pixel normal and scale)
+        ```
+        FssrPostRefine
+
+        ```
+    - FSSR
+        Here we provide the sample batch-process code (need to go back to the main folder):
+        ```
+        cd ..
+        python fssr_batch_process.py
+
+        ```
+    - smoothing
+        ```
+        cd matlab
+        preComputeFssrParam
+
+        ```
 
 - Silhouette completion
     First train on DYCE dataset:
     ```
     python train_sc.py
     ```
-    - Then finetune on Pix3D dataset, using 5-fold cross validation ( you will need to run it 5 times by changing the fold number in L32-35 ):
+    Then finetune on Pix3D dataset, using 5-fold cross validation ( you will need to run it 5 times by changing the fold number in L32-35 ):
     ```
     python train_sc_ft.py
+    python test_sc_pix3d.py
     ```
 
 - Silhouette guidede point cloud reconstruction
     ```
     python train_occ.py
     ```
-    - FSSR post-refinement:
+    FSSR post-refinement same as before, change the saved folder to get results
 
 ## Evaluation
 - ShapeNet
@@ -71,4 +97,8 @@ Network architecture:
     cd pix3d/eval/
     python eval_pix3d.py
     ```
-
+- DYCE (silhouette completion)
+    - This is PyTorch based
+    ```
+    python test_sc_DYCE.py
+    ```
