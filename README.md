@@ -3,6 +3,9 @@ PyTorch implementation for [paper](): "Silhouette Guided Point Cloud Reconstruct
 
 <img src='figs/fig-overview.jpg' width=400>
 
+Network architecture:
+<img src='figs/fig-network.jpg' width=400>
+
 ## Requirements
 - Python 3
 - PyTorch >= 0.4.0
@@ -41,7 +44,7 @@ PyTorch implementation for [paper](): "Silhouette Guided Point Cloud Reconstruct
     ```
     python train_sc.py
     ```
-    - Then finetune on Pix3D dataset, 5-fold cross validation (You will need to run it 5 times by changing the fold number in L32-35):
+    - Then finetune on Pix3D dataset, 5-fold cross validation ( you will need to run it 5 times by changing the fold number in L32-35 ):
     ```
     python train_sc_ft.py
     ```
