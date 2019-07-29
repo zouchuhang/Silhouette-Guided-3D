@@ -17,7 +17,7 @@ Network architecture:
 - random
 - re
 - torchvision
-- Matlab (will be transferred to python later)
+- Matlab (for FSSR based post process)
 
 ## Installation
 - Install [mve](https://github.com/simonfuhrmann/mve) by following the instructions. This is for FSSR based point cloud refinement.
