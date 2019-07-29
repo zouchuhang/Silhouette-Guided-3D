@@ -29,16 +29,17 @@ from data_generator_sc_ft import *
 # Top level data directory. Here we assume the format of the directory conforms 
 #   to the ImageFolder structure
 # five fold cross validation
-model_path = "./model/resnet50_ae_seg_crossentropy_skip4_rot_ft_adam.pth"
-train_datapath = '/data/czou4/pix3d/train/'
-val_datapath = '/data/czou4/pix3d/val/'
+model_path = "./model/Silhouette_Completion_Pix3D_fold1.pth"
+# change folder name for the 5 five cross-validation test: train_fold1/2/3/4/5, val_fold1/2/3/4/5
+train_datapath = './data/pix3d/train_fold1/'
+val_datapath = './data/pix3d/val_fold1/'
 
 # Pre-trained models to choose from [resnet18, resnet34, resnet50]
 model_name = "resnet50"
 
 # if load pretrained model
 Flag_loadweights = True
-weight_path = "../model/resnet50_ae_seg_crossentropy_skip4_rot_adam-2.pth"
+weight_path = "./model/Silhouette_Completion_DYCE_resnet50.pth"
 
 # Number of classes in the dataset
 num_classes = 1024

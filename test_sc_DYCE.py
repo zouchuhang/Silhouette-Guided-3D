@@ -16,8 +16,8 @@ from model_sc import *
 # Top level data directory. Here we assume the format of the directory conforms 
 #   to the ImageFolder structure
 
-weight_path = "./model/resnet18_ae_seg_crossentropy_skip4_rot_adam.pth"
-test_datapath = '/data/czou4/DYCE/test/'
+weight_path = "./model/Silhouette_Completion_DYCE_resnet50.pth"
+test_datapath = './data/DYCE/test/'
 save_path = './result_sc_DYCE/'
 
 # Pre-trained models to choose from [resnet18, resnet34, resnet50]

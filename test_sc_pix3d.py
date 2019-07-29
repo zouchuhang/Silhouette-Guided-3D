@@ -19,15 +19,17 @@ from model_sc import *
 # Top level data directory. Here we assume the format of the directory conforms 
 #   to the ImageFolder structure
 
-weight_path = "../model/resnet50_ae_seg_crossentropy_skip4_rot_adam-2.pth" # syn best
-#weight_path = "./model/resnet50_ae_seg_crossentropy_skip4_rot_ft_adam5.pth"
+category = 'table'
 
-test_datapath = '/data/czou4/pix3d/table_proc/'
+#weight_path = "./model/Silhouette_Completion_DYCE_resnet50.pth"
+weight_path = "./model/Silhouette_Completion_Pix3D_fold1.pth"
 
-save_path = test_datapath+'mask2_pred_ft/'
+test_datapath = './data/pix3d/'+category+'_proc/'
 
-#test_list = '/data/czou4/pix3d/list/chair_test_all5.txt'
-test_list = '/data/czou4/pix3d/list/table_occ_all.txt'
+save_path = test_datapath+'mask_pred_ft/'
+
+test_list = './data/pix3d/list/'+category+'_test_fold1.txt'
+
 occlist = []
 with open(test_list, 'r') as f:
     while(True):
@@ -57,7 +59,7 @@ model_ft = model_ft.to(device)
 model_ft.eval()
 
 # Load data
-namelist = next(os.walk(test_datapath+'/mask2_gt/'))[2]
+namelist = next(os.walk(test_datapath+'/mask_gt/'))[2]
 
 criterion = nn.BCELoss()
 
@@ -72,18 +74,18 @@ for file_list in namelist:
     #file_list = np.random.choice(namelist, 1)  
     #file_list = file_list[0]
     print(file_list)
-    im_path = test_datapath+'/img2/'+file_list
+    im_path = test_datapath+'/img/'+file_list
     img = cv2.imread(im_path)
     img = img.astype('float32')/255.0
-    mask_path = test_datapath+'/mask2/'+file_list
+    mask_path = test_datapath+'/mask/'+file_list
     mask = cv2.imread(mask_path)
     mask = mask.astype('float32')/255.0
     mask = mask[:,:,0]
-    label_path = test_datapath+'/mask2_gt/'+file_list
+    label_path = test_datapath+'/mask_gt/'+file_list
     label = cv2.imread(label_path)
     label = label.astype('float32')/255.0
     label = label[:,:,0]
-    box_path = test_datapath+'/box2/'+file_list
+    box_path = test_datapath+'/box/'+file_list
     box = cv2.imread(box_path)
     box = box.astype('float32')/255.0
     box = box[:,:,0]
@@ -128,16 +130,14 @@ for file_list in namelist:
     if file_list[:-3]+'mat' in occlist:
         loss_f_occ_sum += loss_f
         cnt_occ +=1
+        # save
+        sio.savemat(save_path+file_list[:-3]+'mat',{'image':inputs.data.cpu().numpy(), 'pred':outputs_f})
 
     loss_f_sum += loss_f
     cnt+=1
 
     inputs = inputs.squeeze(0)
     inputs = inputs.permute(1,2,0)
-    
-    # save
-    print(save_path+file_list[:-3]+'png')
-    sio.savemat(save_path+file_list[:-3]+'mat',{'image':inputs.data.cpu().numpy(), 'pred':outputs_f})
     
     print('No. {}, Loss f: {:.6f}, Loss f occ: {:.6f}'.format(cnt+cnt_occ,loss_f_sum/(cnt+np.finfo(float).eps), loss_f_occ_sum/(cnt_occ+np.finfo(float).eps)))
 

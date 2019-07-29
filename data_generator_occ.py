@@ -96,9 +96,9 @@ class ShapeNetDataset(data.Dataset):
                 self.namelist.append(line)
         self.root_dir = root_dir
         if train_type == 'train':
-            self.LSUN_dir = '/data/czou4/LSUN/train/'
+            self.LSUN_dir = './data/LSUN/train/'
         else:
-            self.LSUN_dir = '/data/czou4/LSUN/val/'
+            self.LSUN_dir = './data/LSUN/val/'
         self.LSUNlist = next(os.walk(self.LSUN_dir))[2]
         self.transform = transform
         self.train_type = train_type

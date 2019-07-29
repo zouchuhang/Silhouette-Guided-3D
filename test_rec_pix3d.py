@@ -4,21 +4,22 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
-import time
+import os
 print("PyTorch Version: ",torch.__version__)
 
 from model_occ import *
 import cv2
+import scipy.io as sio
 
 # Top level data directory. Here we assume the format of the directory conforms 
 #   to the ImageFolder structure
 category = 'table' # chair, table, sofa
 
-data_dir = '/data/czou4/pix3d/'+category+'_proc/'
+data_dir = './data/pix3d/'+category+'_proc/'
 
-weight_path = '/data/czou4/model/resnet50_l1_cdw11_2dw60_2dtw70_l2_cdw11_2dw80_2dtw90_ete_fseg_occ_adam.pth'
+weight_path = './model/PointCloud_Reconstruction_resnet50_Complete_Silhouette_Guidance.pth'
 
-save_path = './result_pix3d_gtfseg_ft/'+category+'/'
+save_path = './result_pix3d_fseg_ft/'+category+'/'
 
 # Pre-trained models to choose from [resnet18, resnet34, resnet50]
 model_name = "resnet50"
@@ -58,7 +59,7 @@ def pairwise_distances(a, b):
     P = (rx.transpose(2,1).expand_as(zz) + ry.expand_as(zz) - 2*zz)
     return P.min(1)[0], P.min(2)[0]
 
-namelist = next(os.walk(data_dir+'/mask2_gt/'))[2]
+namelist = next(os.walk(data_dir+'/mask_gt/'))[2]
 cnt = 0
 loss_sum = 0.0
 for file_list in namelist:
@@ -67,11 +68,18 @@ for file_list in namelist:
     #file_list = file_list[0]
     print(file_list)
     
-    img = cv2.imread(data_dir+'/img2/'+file_list)
+    img = cv2.imread(data_dir+'/img/'+file_list)
     img = img.astype('float32')/255.0
-    mask =cv2.imread(data_dir+'/mask2/'+file_list)
-    mask = mask.astype('float32')/255.0
-    mask = mask[:,:,0]
+    # visible silhouette
+    #mask =cv2.imread(data_dir+'/mask/'+file_list)
+    # ground truth complete silhouette
+    #mask =cv2.imread(data_dir+'/mask_gt/'+file_list)
+    # predicted complet silhoutte
+    mask = sio.loadmat(data_dir+'/mask_pred_ft/'+file_list[:-4]+'.mat')
+    mask = mask['pred']
+    
+    #mask = mask.astype('float32')/255.0
+    #mask = mask[:,:,0]
     mask = np.expand_dims(mask,axis=2)
 
     mask = np.float32(mask>0.5)
@@ -82,9 +90,6 @@ for file_list in namelist:
     
     inputs = img.permute(2,0,1)
     inputs = inputs.unsqueeze(0)
-    
-    inputs = torch.squeeze(inputs, dim=0)
-    inputs = inputs.permute(1,2,0)
     
     outputs_r, outputs_f = model_ft(inputs)
     

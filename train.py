@@ -28,10 +28,10 @@ import re
 
 # Top level data directory. Here we assume the format of the directory conforms 
 #   to the ImageFolder structure
-data_dir = "/data/czou4/ShapeNet/"
+data_dir = "./data/ShapeNet/"
 
 # save path
-model_path = './model/resnet50_l1_cdw11_2dw60_2dtw70_l2_cdw11_2dw80_2dtw90_ete_adam.pth'
+model_path = './model/PointCloud_Reconstruction_resnet50_ShapeNet.pth'
 
 # load data list
 train_datapath = './data/train_list.txt'
@@ -42,7 +42,7 @@ model_name = "resnet50"
 
 # load pretrained weights
 Flag_loadweights = False
-weight_path = './model/resnet50_l1_cdw11_2dw60_2dtw70_l2_w11_2dw80_2dtw90_ete_adam.pth'
+weight_path = './model/PointCloud_Reconstruction_resnet50_ShapeNet.pth'
 
 
 # Number of classes in the dataset

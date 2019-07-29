@@ -31,7 +31,7 @@ import re
 # Top level data directory. Here we assume the format of the directory conforms 
 #   to the ImageFolder structure
 data_dir = "/data/czou4/ShapeNet/"
-model_path = "/data/czou4/model/resnet50_l1_cdw11_2dw60_2dtw70_fseg_occ_adam.pth"
+model_path = "./model/PointCloud_Reconstruction_resnet50_Complete_Silhouette_Guidance.pth"
 
 # use train-val since we evaluate on Pix3D but not ShapeNet
 train_datapath = './data/trainval_list.txt'
@@ -41,8 +41,8 @@ val_datapath = './data/test_list.txt'
 model_name = "resnet50"
 
 # load pretrained weights
-Flag_loadweights = False
-weight_path = '/data/czou4/model/resnet50_l1_cdw11_fseg_occ_adam.pth'
+Flag_loadweights = True
+weight_path = './model/PointCloud_Reconstruction_resnet50_ShapeNet.pth'
 
 # Number of classes in the dataset
 num_classes = 1024

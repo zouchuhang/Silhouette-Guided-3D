@@ -12,10 +12,10 @@ from model import *
 
 # Top level data directory. Here we assume the format of the directory conforms 
 #   to the ImageFolder structure
-data_dir = "/data/czou4/ShapeNet/"
+data_dir = "./data/ShapeNet/"
 
 # model path
-weight_path = '/data/czou4/model/resnet50_l1_cdw11_2dw60_2dtw70_l2_cdw11_2dw80_2dtw90_ete_scratch_adam.pth' # this one
+weight_path = './model/PointCloud_Reconstruction_resnet50_ShapeNet.pth' # this one
 
 test_datapath = './data/test_list.txt'
 save_path = './result/'

@@ -27,16 +27,16 @@ from data_generator_sc import *
 
 # Top level data directory. Here we assume the format of the directory conforms 
 #   to the ImageFolder structure
-model_path = "./model/resnet50_ae_seg_crossentropy_skip4_rot_maskrcnn_adam.pth"
-train_datapath = '/data/czou4/DYCE/train_det/'
-val_datapath = '/data/czou4/DYCE/val_det/'
+model_path = "./model/Silhouette_Completion_DYCE_resnet50.pth"
+train_datapath = './data/DYCE/train/'
+val_datapath = './data/DYCE/val/'
 
 # Pre-trained models to choose from [resnet18, resnet34, resnet50]
 model_name = "resnet50"
 
 # if load pretrained model
 Flag_loadweights = False
-weight_path = "./model/resnet50_ae_seg_crossentropy_skip4_rot_adam-2.pth"
+weight_path = "./model/Silhouette_Completion_DYCE_resnet50.pth"
 
 # Number of classes in the dataset
 num_classes = 1024
@@ -155,7 +155,6 @@ model_ft = model_ft.to(device)
 if Flag_loadweights:
     pretrained_dict = torch.load(weight_path)
     model_dict = model_ft.state_dict()
-    pretrained_dict['resnet.conv1.weight'] = torch.cat((pretrained_dict['resnet.conv1.weight'], model_dict['resnet.conv1.weight'][:,3:,:,:]), 1)
     pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
     model_dict.update(pretrained_dict)
     model_ft.load_state_dict(model_dict)
