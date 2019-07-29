@@ -30,7 +30,7 @@ with open(test_datapath, 'r') as f:
             break
         namelist.append(line)
 # eval_path
-eval_path = '../data/result_4096_ply_out_smooth_pt2466/'
+eval_path = '../result/result_shapenet_ply_out_smooth_pt2466/'
 
 # Initialize session
 # xyz1:dataset_points * 3, xyz2:query_points * 3
