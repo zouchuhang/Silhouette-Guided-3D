@@ -73,6 +73,7 @@ Network architecture:
 - Silhouette guidede point cloud reconstruction
     ```
     python train_occ.py
+    python test_rec_pix3d.py
     ```
     FSSR post-refinement same as before, change the saved folder to get results
 
