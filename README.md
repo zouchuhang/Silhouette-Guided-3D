@@ -41,11 +41,10 @@ PyTorch implementation for [paper](): "Silhouette Guided Point Cloud Reconstruct
     ```
     python train_sc.py
     ```
-    Then finetune on Pix3D dataset, 5-fold cross validation:
+    Then finetune on Pix3D dataset, 5-fold cross validation (You will need to run it 5 times by changing the fold number in L32-35):
     ```
     python train_sc_ft.py
     ```
-    - You will need to run it 5 times by changing the fold number in L32-35
 
 - Silhouette guidede point cloud reconstruction
     ```
@@ -54,8 +53,15 @@ PyTorch implementation for [paper](): "Silhouette Guided Point Cloud Reconstruct
 
 ## Evaluation
 - ShapeNet
-
+    - You need to use TensorFlow 3.0+ to run the evaluation:
+    ```
+    cd pcn
+    python eval_shapenet.py
+    ```
 - Pix3D
-
-
+    - You need to use TensorFlow 3.0+ to run the evaluation:
+    ```
+    cd pix3d/eval/
+    python eval_pix3d.py
+    ```
 
