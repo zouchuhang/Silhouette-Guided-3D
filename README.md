@@ -27,15 +27,35 @@ PyTorch implementation for [paper](): "Silhouette Guided Point Cloud Reconstruct
 - Download [pre-processed Pix3D dataset](https://drive.google.com/file/d/1DdcDpePJ-t19SBLRuu0LSK5mNCeB1iUJ/view?usp=sharing) and put them under the ./data/ folder. This includes pre-computed complete silhouette and ground truth point clouds rotated w.r.t. camera position.
 - Download [ShapeNet dataset](https://drive.google.com/drive/folders/131dH36qXCabym1JjSmEpSQZg4dmZVQid) and put them under the ./data/ folder.
 - Download [pre-processed LSUN dataset](https://drive.google.com/file/d/1L7MrNuwYo7-e-adCHJ-S4d4u-_-4JMpS/view?usp=sharing) and put them under the ./data/ folder
-- Download [pre-computed result](). and put them under the current folder. This includes point clouds prediction on ShapeNet and Pix3D after FSSR refinement.s
+- Download [pre-computed result](). and put them under the current folder. This includes point clouds prediction on ShapeNet and Pix3D after FSSR refinement.
 
 ## Training
 - Point cloud reconstruction
+```
+python train.py
+```
+FSSR post-refinement:
+
 - Silhouette completion
+First train on DYCE dataset:
+```
+python train_sc.py
+```
+Then finetune on Pix3D dataset, 5-fold cross validation:
+```
+python train_sc_ft.py
+```
+You will need to run it 5 times by changing the fold number in L32-35
+
 - Silhouette guidede point cloud reconstruction
+```
+python train_occ.py
+```
 
 ## Evaluation
+- ShapeNet
 
+- Pix3D
 
 
 
