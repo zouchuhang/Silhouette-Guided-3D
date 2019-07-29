@@ -58,27 +58,27 @@ Network architecture:
     Then perform FSSR post-refinement step as describe below
 
 ## Surface Based Point Clouds Refinement
- - Start matlab
-        ```
-        cd matlab
-        ./matlab
-        ```
-    - pre-compute FSSR params (per-pixel normal and scale), change folder name based on your saved network predictions path
-        ```
-        FssrPostRefine
-        ```
-    - FSSR
-        Here we provide the sample batch-process code (need to go back to the main folder):
-        ```
-        cd ..
-        python fssr_batch_process.py
-        ```
-    - smoothing
-        ```
-        cd matlab
-        preComputeFssrParam
-
-        This produces the refined point clouds for evaluation.
+- Start matlab
+    ```
+    cd matlab
+    ./matlab
+    ```
+- pre-compute FSSR params (per-pixel normal and scale), change folder name based on your saved network predictions path
+    ```
+    FssrPostRefine
+    ```
+- FSSR
+    Here we provide the sample batch-process code (need to go back to the main folder):
+    ```
+    cd ..
+    python fssr_batch_process.py
+    ```
+- smoothing
+    ```
+    cd matlab
+    preComputeFssrParam
+    ```
+    This produces the refined point clouds for evaluation.
  
 ## Evaluation
 - Pix3D
