@@ -30,8 +30,8 @@ import re
 
 # Top level data directory. Here we assume the format of the directory conforms 
 #   to the ImageFolder structure
-data_dir = "/data/czou4/ShapeNet/"
-model_path = "./model/PointCloud_Reconstruction_resnet50_Complete_Silhouette_Guidance.pth"
+data_dir = "./data/ShapeNet/"
+model_path = "./model/PointCloud_Reconstruction_resnet50_Complete_Silhouette_Guidance2.pth"
 
 # use train-val since we evaluate on Pix3D but not ShapeNet
 train_datapath = './data/trainval_list.txt'
