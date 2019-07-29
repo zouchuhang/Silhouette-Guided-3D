@@ -24,10 +24,10 @@ def f_score(label, predict, dist_label, dist_pred, threshold):
 
 category = 'chair'
 # data_path
-eval_path = '../../data/pix3d/result_pix3d_predfseg_ft_ply_out_smooth/'+category+'/'
-#eval_path = '../../data/pix3d/result_pix3d_predvseg_ply_out_smooth/'+category+'/'
-#eval_path = '../../data/pix3d/result_pix3d_gtfseg_ply_out_smooth/'+category+'/'
-#eval_path = '../../data/pix3d/result_pix3d_noseg_ply_out_smooth/'+category+'/'
+eval_path = '../../result/pix3d/result_pix3d_predfseg_ft_ply_out_smooth/'+category+'/'
+#eval_path = '../../result/pix3d/result_pix3d_predvseg_ply_out_smooth/'+category+'/'
+#eval_path = '../../result/pix3d/result_pix3d_gtfseg_ply_out_smooth/'+category+'/'
+#eval_path = '../../result/pix3d/result_pix3d_noseg_ply_out_smooth/'+category+'/'
 gt_path = '../../data/pix3d/'+category+'_proc/gt/'
 
 test_list = '../../data/pix3d/list/'+category+'_occ_all.txt'
