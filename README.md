@@ -46,25 +46,21 @@ Network architecture:
         ```
         cd matlab
         ./matlab
-    
         ```
     - pre-compute FSSR params (per-pixel normal and scale)
         ```
         FssrPostRefine
-
         ```
     - FSSR
         Here we provide the sample batch-process code (need to go back to the main folder):
         ```
         cd ..
         python fssr_batch_process.py
-
         ```
     - smoothing
         ```
         cd matlab
         preComputeFssrParam
-
         ```
 
 - Silhouette completion
