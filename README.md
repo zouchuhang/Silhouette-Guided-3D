@@ -37,27 +37,7 @@ Network architecture:
     python train.py
     python test.py
     ```
-    This will save network predictions, then for FSSR post-refinement:
-    - Start matlab
-        ```
-        cd matlab
-        ./matlab
-        ```
-    - pre-compute FSSR params (per-pixel normal and scale)
-        ```
-        FssrPostRefine
-        ```
-    - FSSR
-        Here we provide the sample batch-process code (need to go back to the main folder):
-        ```
-        cd ..
-        python fssr_batch_process.py
-        ```
-    - smoothing
-        ```
-        cd matlab
-        preComputeFssrParam
-        ```
+    This will save network predictions for the downstream FSSR post-refinement step.
 
 - Silhouette completion
     First train on DYCE dataset:
@@ -75,15 +55,38 @@ Network architecture:
     python train_occ.py
     python test_rec_pix3d.py
     ```
-    FSSR post-refinement same as before, change the saved folder to get results
+    Then perform FSSR post-refinement step as describe below
 
+## Surface Based Point Clouds Refinement
+ - Start matlab
+        ```
+        cd matlab
+        ./matlab
+        ```
+    - pre-compute FSSR params (per-pixel normal and scale), change folder name based on your saved network predictions path
+        ```
+        FssrPostRefine
+        ```
+    - FSSR
+        Here we provide the sample batch-process code (need to go back to the main folder):
+        ```
+        cd ..
+        python fssr_batch_process.py
+        ```
+    - smoothing
+        ```
+        cd matlab
+        preComputeFssrParam
+
+        This produces the refined point clouds for evaluation.
+ 
 ## Evaluation
 - Pix3D
     - ICP-based fitting since Pix3D ground truth is object-centered (you can skip this step since we've included pre-computered ground truth and predictions). Code is derived from [3D-LMNET](https://github.com/val-iisc/3d-lmnet), which also includes the ground truth point cloud.
         ```
         cd pcn
         python metrics_pix3d.py
-    ```
+        ```
     - You need to use TensorFlow 3.0+ to run the evaluation:
         ```
         cd pix3d/eval/
