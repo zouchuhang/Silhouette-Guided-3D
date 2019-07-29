@@ -24,15 +24,15 @@ PyTorch implementation for [paper](): "Silhouette Guided Point Cloud Reconstruct
 ## Download Data and Pre-trained Model
 - Download [pre-trained models](https://drive.google.com/file/d/1KjmNb1TuIALyiKXNsEQCbp7ow9kP_ENB/view?usp=sharing) and put them under the ./model/ folder.
 - Download [pre-processed DYCE dataset](https://drive.google.com/file/d/14sa6p3f-wT1SFL1tZlOPMe63N2dntHEG/view?usp=sharing) and put them under the ./data/ folder.
-- Download [pre-processed Pix3D dataset]() and put them under the ./data/ folder. This includes pre-computed complete silhouette.
+- Download [pre-processed Pix3D dataset](https://drive.google.com/file/d/1DdcDpePJ-t19SBLRuu0LSK5mNCeB1iUJ/view?usp=sharing) and put them under the ./data/ folder. This includes pre-computed complete silhouette and ground truth point clouds rotated w.r.t. camera position.
 - Download [ShapeNet dataset](https://drive.google.com/drive/folders/131dH36qXCabym1JjSmEpSQZg4dmZVQid) and put them under the ./data/ folder.
-- Download [pre-processed LSUN dataset]() and put them under the ./data/ folder
-- Download [pre-computed result](). and put them under the current folder. This includes point clouds prediction on ShapeNet and Pix3D after FSSR refinement.
-
-## Preprocess
+- Download [pre-processed LSUN dataset](https://drive.google.com/file/d/1L7MrNuwYo7-e-adCHJ-S4d4u-_-4JMpS/view?usp=sharing) and put them under the ./data/ folder
+- Download [pre-computed result](). and put them under the current folder. This includes point clouds prediction on ShapeNet and Pix3D after FSSR refinement.s
 
 ## Training
-
+- Point cloud reconstruction
+- Silhouette completion
+- Silhouette guidede point cloud reconstruction
 
 ## Evaluation
 
