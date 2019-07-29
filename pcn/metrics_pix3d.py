@@ -66,7 +66,7 @@ for file_list in namelist:
     pcl_gt_scaled, pcl_pred_scaled = sess.run([xyz3_scaleds, xyz4_scaleds], feed_dict={xyz1:pcl_gt,xyz2:pcl_pred})
     T, _, _ = icp(pcl_gt_scaled,pcl_pred_scaled, tolerance=1e-10, max_iterations=1000)
 
-    # no translation
+    # no rotation
     pcl_pred_icp = pcl_pred_scaled - T[:3, 3]
 
     # save
