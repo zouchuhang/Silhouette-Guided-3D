@@ -30,7 +30,7 @@ Network architecture:
 ## Download Data and Pre-trained Model
 - Download [pre-trained models](https://drive.google.com/file/d/1KjmNb1TuIALyiKXNsEQCbp7ow9kP_ENB/view?usp=sharing) and put them under the ./model/ folder.
 - Download [pre-processed DYCE dataset](https://drive.google.com/file/d/14sa6p3f-wT1SFL1tZlOPMe63N2dntHEG/view?usp=sharing) and put them under the ./data/ folder.
-- Download [pre-processed Pix3D dataset](https://drive.google.com/file/d/1DdcDpePJ-t19SBLRuu0LSK5mNCeB1iUJ/view?usp=sharing) and put them under the ./data/ folder. This includes pre-computed complete silhouette and ground truth point clouds rotated w.r.t. camera position.
+- Download [pre-processed Pix3D dataset](https://drive.google.com/file/d/1DdcDpePJ-t19SBLRuu0LSK5mNCeB1iUJ/view?usp=sharing) and put them under the ./data/ folder. This includes pre-computed complete silhouette and ground truth point clouds rotated w.r.t. camera position. We've excluded examples with incorrect Mask-RCNN detections.
 - Download [ShapeNet dataset](https://drive.google.com/drive/folders/131dH36qXCabym1JjSmEpSQZg4dmZVQid) and put them under the ./data/ folder.
 - Download [pre-processed LSUN dataset](https://drive.google.com/file/d/1L7MrNuwYo7-e-adCHJ-S4d4u-_-4JMpS/view?usp=sharing) and put them under the ./data/ folder
 - Download [pre-computed result](https://drive.google.com/file/d/103nkDQ5fkJVFV2G9x9FQRSuHByJlKY7q/view?usp=sharing). and put them under the ./result/ folder. This includes point clouds prediction on ShapeNet and Pix3D after FSSR refinement.
@@ -81,18 +81,24 @@ Network architecture:
     FSSR post-refinement same as before, change the saved folder to get results
 
 ## Evaluation
+- Pix3D
+    - ICP-based fitting since Pix3D ground truth is object-centered (you can skip this step since we've included pre-computered ground truth and predictions). Code is derived from [3D-LMNET](https://github.com/val-iisc/3d-lmnet)
+    ```
+    cd pcn/
+    python metrics_pix3d.py
+    ```
+    - You need to use TensorFlow 3.0+ to run the evaluation:
+    ```
+    cd pix3d/eval/
+    python eval_pix3d.py
+    ```
 - ShapeNet
     - You need to use TensorFlow 3.0+ to run the evaluation:
     ```
     cd pcn
     python eval_shapenet.py
     ```
-- Pix3D
-    - You need to use TensorFlow 3.0+ to run the evaluation:
-    ```
-    cd pix3d/eval/
-    python eval_pix3d.py
-    ```
+    
 - DYCE (silhouette completion)
     - This is PyTorch based
     ```
