@@ -77,6 +77,7 @@ Network architecture:
     ```
     cd matlab
     preComputeFssrParam
+    cd ..
     ```
     This produces the refined point clouds for evaluation.
  
@@ -86,17 +87,20 @@ Network architecture:
         ```
         cd pcn
         python metrics_pix3d.py
+        cd ..
         ```
     - You need to use TensorFlow 3.0+ to run the evaluation:
         ```
         cd pix3d/eval/
         python eval_pix3d.py
+        cd ../../
         ```
 - ShapeNet
     - You need to use TensorFlow 3.0+ to run the evaluation:
         ```
         cd pcn
         python eval_shapenet.py
+        cd ..
         ```
     - To compare with object-centered point cloud prediction appraoch ([3D-LMNET](https://github.com/val-iisc/3d-lmnet)), you need to perform ICP-based fitting first:
         ```
@@ -104,6 +108,7 @@ Network architecture:
         python metrics_shapenet.py
         cd ../pix3d/eval/
         python eval_shapenet_object_centered.py
+        cd ../../
         ```
 - DYCE (silhouette completion)
     - This is PyTorch based
