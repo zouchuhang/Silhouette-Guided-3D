@@ -112,6 +112,6 @@ Network architecture:
         ```
 - DYCE (silhouette completion)
     - This is PyTorch based
-    ```
-    python test_sc_DYCE.py
-    ```
+        ```
+        python test_sc_DYCE.py
+        ```
