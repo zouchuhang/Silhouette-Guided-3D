@@ -1,5 +1,5 @@
 # Silhouette-Guided-3D
-PyTorch implementation for [paper](): "Silhouette Guided Point Cloud Reconstruction beyond Occlusion"
+PyTorch implementation for [paper](https://arxiv.org/pdf/1907.12253.pdf): "Silhouette Guided Point Cloud Reconstruction beyond Occlusion"
 
 <img src='figs/fig-overview.jpg' width=400>
 
