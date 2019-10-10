@@ -115,3 +115,14 @@ Network architecture:
         ```
         python test_sc_DYCE.py
         ```
+
+## Citation
+Please cite our paper for any purpose of usage.
+```
+@article{zou2019silhouette,
+  title={Silhouette Guided Point Cloud Reconstruction beyond Occlusion},
+  author={Zou, Chuhang and Hoiem, Derek},
+  journal={arXiv preprint arXiv:1907.12253},
+  year={2019}
+}
+```
