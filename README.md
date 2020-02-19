@@ -1,7 +1,7 @@
 # Silhouette-Guided-3D
 PyTorch implementation for WACV 2020 [paper](https://arxiv.org/pdf/1907.12253.pdf): "Silhouette Guided Point Cloud Reconstruction beyond Occlusion"
 
-See our short introduction [video](https://youtu.be/ae0-rwjzwWU)
+Our short introduction [video](https://youtu.be/ae0-rwjzwWU)
 
 <img src='figs/fig-overview.jpg' width=400>
 
