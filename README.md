@@ -121,10 +121,11 @@ Network architecture:
 ## Citation
 Please cite our paper for any purpose of usage.
 ```
-@article{zou2019silhouette,
-  title={Silhouette Guided Point Cloud Reconstruction beyond Occlusion},
-  author={Zou, Chuhang and Hoiem, Derek},
-  journal={arXiv preprint arXiv:1907.12253},
-  year={2019}
+@InProceedings{Zou_2020_WACV,
+author = {Zou, Chuhang and Hoiem, Derek},
+title = {Silhouette Guided Point Cloud Reconstruction beyond Occlusion},
+booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+month = {March},
+year = {2020}
 }
 ```
